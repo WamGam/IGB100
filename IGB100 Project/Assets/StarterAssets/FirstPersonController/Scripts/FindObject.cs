@@ -33,10 +33,6 @@ public class FindObject : MonoBehaviour
             {
                 audioDuck = objs[i].GetComponent<AudioSource>();
             }
-            if (i == 1)
-            {
-                audioDuck2 = objs[i].GetComponent<AudioSource>();
-            }
         }
     }
 
@@ -50,14 +46,10 @@ public class FindObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            foreach (var obj in objs)
+            if (Vector3.Distance(player.transform.position, objs[0].transform.position) < 50)
             {
-                if (Vector3.Distance(player.transform.position, obj.transform.position) < 50)
-                {
-                    UnityEngine.Debug.Log(obj.transform.position);
-                    audioDuck.Play();
-                    audioDuck2.Play();
-                }
+                UnityEngine.Debug.Log(objs[0].transform.position);
+                audioDuck.Play();
             }
         }
     }

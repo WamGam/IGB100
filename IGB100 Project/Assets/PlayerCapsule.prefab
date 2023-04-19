@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 8965197902464898098}
   - component: {fileID: 4667023145183053881}
   - component: {fileID: 4667023145183053880}
+  - component: {fileID: 5574242086649317278}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -382,3 +383,19 @@ MonoBehaviour:
   player: {fileID: 8965197902464898110}
   objs: []
   preObjs: []
+--- !u!114 &5574242086649317278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965197902464898110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c183c49a2631af14baa213c8b3508b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCameraTransform: {fileID: 0}
+  pickUpLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
