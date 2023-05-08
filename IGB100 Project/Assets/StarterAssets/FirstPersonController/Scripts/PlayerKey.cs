@@ -9,6 +9,7 @@ public class PlayerKey : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
 
     private MoveWall moveWall;
+    private StartTimer startTimer;
 
     private void Update()
     {
@@ -20,6 +21,10 @@ public class PlayerKey : MonoBehaviour
                 if (raycastHit.transform.TryGetComponent(out moveWall))
                 {
                     moveWall.Open();
+                }
+                else if (raycastHit.transform.TryGetComponent(out startTimer))
+                {
+                    startTimer.Begin();
                 }
             }
         }

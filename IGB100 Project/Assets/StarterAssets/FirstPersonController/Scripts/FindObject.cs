@@ -9,30 +9,36 @@ public class FindObject : MonoBehaviour
     public GameObject player;
     public GameObject[] objs;
     public GameObject[] preObjs;
-    private AudioSource audioDuck;
+    private AudioSource[] audioDuck = new AudioSource[5];
     private AudioSource audioDuck2;
     System.Random rnd = new System.Random();
+    public int[] realDucks = new int[3];
+    private int[] intArray = new int[10];
     
     // Start is called before the first frame update
     void Start()
     {
         preObjs = GameObject.FindGameObjectsWithTag("PreFind");
-        int selection = rnd.Next(0, preObjs.Length - 1);
+        for (int i = 0; i < 10; i++)
+        {
+            intArray[i] = i;
+        }
+        Shuffle(intArray);
+       
         for (int i = 0; i < preObjs.Length; i++)
         {
-            if (i == selection)
+            for (int j = 0; j < 3; j++)
             {
-                preObjs[i].gameObject.tag = "Finder";
-                break;
+                if (i == intArray[j])
+                {
+                    preObjs[i].gameObject.tag = "Finder";
+                }
             }
         }
         objs = GameObject.FindGameObjectsWithTag("Finder");
          for (int i = 0; i< objs.Length; i++)
         {
-            if (i == 0)
-            {
-                audioDuck = objs[i].GetComponent<AudioSource>();
-            }
+            audioDuck[i] = objs[i].GetComponent<AudioSource>();
         }
     }
 
@@ -46,11 +52,37 @@ public class FindObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (Vector3.Distance(player.transform.position, objs[0].transform.position) < 50)
+            for (int i = 0; i < objs.Length; i++)
             {
-                UnityEngine.Debug.Log(objs[0].transform.position);
-                audioDuck.Play();
+                if (Vector3.Distance(player.transform.position, objs[i].transform.position) < 50)
+                {
+                    UnityEngine.Debug.Log(objs[0].transform.position);
+                    audioDuck[i].Play();
+                }
             }
+        }
+    }
+
+    static bool Contains(int[] array, int value)
+    {
+        for (int i = 0; i <= array.Length; i++)
+        {
+            if (array[i] == value)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void Shuffle(int[] obj)
+    {
+        for (int i = 0; i < obj.Length; i++)
+        {
+            int temp = obj[i];
+            int objIndex = UnityEngine.Random.Range(0, obj.Length);
+            obj[i] = obj[objIndex];
+            obj[objIndex] = temp;
         }
     }
 }

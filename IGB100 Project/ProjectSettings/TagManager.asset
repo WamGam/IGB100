@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Finder
   - PreFind
+  - Tunnel
+  - Pickup
   layers:
   - Default
   - TransparentFX
