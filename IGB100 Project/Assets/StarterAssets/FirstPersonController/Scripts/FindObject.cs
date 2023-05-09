@@ -36,7 +36,7 @@ public class FindObject : MonoBehaviour
             }
         }
         objs = GameObject.FindGameObjectsWithTag("Finder");
-         for (int i = 0; i< objs.Length; i++)
+         for (int i = 0; i < 3; i++)
         {
             audioDuck[i] = objs[i].GetComponent<AudioSource>();
         }
