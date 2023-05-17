@@ -36,7 +36,7 @@ public class CollectDuckling : MonoBehaviour
                 if (raycastHit.transform.TryGetComponent(out duckling))
                 {
                     collected++;
-                    startTimer.timeLeft = startTimer.timeLeft + 60.0f;
+                    startTimer.timeLeft = startTimer.timeLeft + 30.0f;
                     pointsText.text = collected.ToString();
                     textBox.enabled = true;
                     duckling.StartDialogue();
@@ -50,7 +50,7 @@ public class CollectDuckling : MonoBehaviour
         }
         if (collected >= 10)
         {
-            SceneManager.LoadScene("Programming");
+            SceneManager.LoadScene("Animation");
         }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - PreFind
   - Tunnel
   - Pickup
+  - Blockage
   layers:
   - Default
   - TransparentFX

@@ -14,8 +14,15 @@ public class ObjectGrabbable : MonoBehaviour
 
     public void Grab(Transform objectGrabPointTransform)
     {
-        this.objectGrabPointTransform = objectGrabPointTransform;
-        objectRigidbody.useGravity = false;
+        if (gameObject.tag == "Blockage")
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            this.objectGrabPointTransform = objectGrabPointTransform;
+            objectRigidbody.useGravity = false;
+        }
     }
 
     public void Drop()
