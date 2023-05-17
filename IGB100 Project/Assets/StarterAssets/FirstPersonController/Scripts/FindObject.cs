@@ -9,10 +9,10 @@ public class FindObject : MonoBehaviour
     public GameObject player;
     public GameObject[] objs;
     public GameObject[] preObjs;
-    private AudioSource[] audioDuck = new AudioSource[5];
+    private AudioSource[] audioDuck = new AudioSource[10];
     private AudioSource audioDuck2;
     System.Random rnd = new System.Random();
-    public int[] realDucks = new int[3];
+    public int[] realDucks = new int[5];
     private int[] intArray = new int[10];
     
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class FindObject : MonoBehaviour
        
         for (int i = 0; i < preObjs.Length; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < 5; j++)
             {
                 if (i == intArray[j])
                 {
@@ -36,7 +36,7 @@ public class FindObject : MonoBehaviour
             }
         }
         objs = GameObject.FindGameObjectsWithTag("Finder");
-         for (int i = 0; i < 3; i++)
+         for (int i = 0; i < 10; i++)
         {
             audioDuck[i] = objs[i].GetComponent<AudioSource>();
         }
@@ -54,7 +54,7 @@ public class FindObject : MonoBehaviour
         {
             for (int i = 0; i < objs.Length; i++)
             {
-                if (Vector3.Distance(player.transform.position, objs[i].transform.position) < 50)
+                if (Vector3.Distance(player.transform.position, objs[i].transform.position) < 80)
                 {
                     UnityEngine.Debug.Log(objs[0].transform.position);
                     audioDuck[i].Play();

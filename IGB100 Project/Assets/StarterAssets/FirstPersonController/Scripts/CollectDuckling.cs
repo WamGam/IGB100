@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CollectDuckling : MonoBehaviour
 {
@@ -11,10 +13,18 @@ public class CollectDuckling : MonoBehaviour
 
     public TMP_Text pointsText;
     public int collected = 0;
+    public TextMeshProUGUI textComponent;
+    public Image textBox;
 
     private Duckling duckling;
     public StartTimer startTimer;
     public MoveWall moveWall;
+
+    private void Start()
+    {
+        textBox.enabled = false;
+        textComponent.text = string.Empty;
+    }
 
     private void Update()
     {
@@ -28,14 +38,19 @@ public class CollectDuckling : MonoBehaviour
                     collected++;
                     startTimer.timeLeft = startTimer.timeLeft + 60.0f;
                     pointsText.text = collected.ToString();
-                    raycastHit.collider.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    textBox.enabled = true;
+                    duckling.StartDialogue();
                 }
             }
         }
 
-        if (collected >= 3)
+        if (collected >= 5)
         {
             moveWall.Open();
+        }
+        if (collected >= 10)
+        {
+            SceneManager.LoadScene("Programming");
         }
     }
 }

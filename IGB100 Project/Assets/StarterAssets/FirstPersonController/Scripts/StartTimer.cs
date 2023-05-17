@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StartTimer : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class StartTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timerOn)
+        if (timerOn)
         {
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
@@ -41,7 +42,11 @@ public class StartTimer : MonoBehaviour
                 timeLeft = 0;
                 timerOn = false;
             }
-            timerTxt.text = timeLeft.ToString("f1");
+            timerTxt.text = timeLeft.ToString("f2");
+        }
+        else
+        {
+            SceneManager.LoadScene("Programming");
         }
     }
 }
