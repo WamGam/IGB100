@@ -91,7 +91,7 @@ public class RunDuck : MonoBehaviour
     public void lookAt(GameObject target)
     {
         var rotation = Quaternion.LookRotation(target.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 3);
     }
 
     public void findTunnel()

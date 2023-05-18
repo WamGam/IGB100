@@ -20,6 +20,8 @@ public class CollectDuckling : MonoBehaviour
     public StartTimer startTimer;
     public MoveWall moveWall;
 
+    private bool firstFive = true;
+
     private void Start()
     {
         textBox.enabled = false;
@@ -39,14 +41,18 @@ public class CollectDuckling : MonoBehaviour
                     startTimer.timeLeft = startTimer.timeLeft + 30.0f;
                     pointsText.text = collected.ToString();
                     textBox.enabled = true;
-                    duckling.StartDialogue();
+                    if (raycastHit.transform.gameObject.tag == "Finder")
+                    {
+                        duckling.StartDialogue();
+                    }
                 }
             }
         }
 
-        if (collected >= 5)
+        if (collected >= 5 && firstFive)
         {
             moveWall.Open();
+            firstFive = false;
         }
         if (collected >= 10)
         {

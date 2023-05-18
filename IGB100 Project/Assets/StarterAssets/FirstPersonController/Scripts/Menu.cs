@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
 
     public string Animation;
+    public string introduce;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +29,9 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
 
+    }
+    public void Instruc()
+    {
+        SceneManager.LoadScene(introduce);
     }
 }

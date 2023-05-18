@@ -46,7 +46,7 @@ public class StartTimer : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Programming");
+            SceneManager.LoadScene("END");
         }
     }
 }

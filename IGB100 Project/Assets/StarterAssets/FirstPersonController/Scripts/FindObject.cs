@@ -13,13 +13,13 @@ public class FindObject : MonoBehaviour
     private AudioSource audioDuck2;
     System.Random rnd = new System.Random();
     public int[] realDucks = new int[5];
-    private int[] intArray = new int[10];
+    private int[] intArray = new int[14];
     
     // Start is called before the first frame update
     void Start()
     {
         preObjs = GameObject.FindGameObjectsWithTag("PreFind");
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 14; i++)
         {
             intArray[i] = i;
         }
@@ -56,7 +56,6 @@ public class FindObject : MonoBehaviour
             {
                 if (Vector3.Distance(player.transform.position, objs[i].transform.position) < 80)
                 {
-                    UnityEngine.Debug.Log(objs[0].transform.position);
                     audioDuck[i].Play();
                 }
             }
