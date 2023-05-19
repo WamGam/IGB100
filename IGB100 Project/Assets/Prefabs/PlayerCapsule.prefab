@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 8045140048748108872}
   - component: {fileID: 7940211688928662958}
   - component: {fileID: 7940211688928662957}
+  - component: {fileID: 7555953917358088173}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -645,6 +646,7 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 2147483647
+  pickupInfo: {fileID: 0}
 --- !u!114 &7077727089722135534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +697,8 @@ MonoBehaviour:
     m_Bits: 0
   pointsText: {fileID: 2521377641350596789}
   collected: 0
+  textComponent: {fileID: 0}
+  textBox: {fileID: 0}
   startTimer: {fileID: 7940211688928662957}
   moveWall: {fileID: 0}
 --- !u!114 &7940211688928662957
@@ -713,6 +717,24 @@ MonoBehaviour:
   timeLeft: 600
   timerOn: 0
   timerTxt: {fileID: 2521377640976329063}
+--- !u!114 &7555953917358088173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816053334858452968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9a2a864ae303647a78f92856c6af96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCameraTransform: {fileID: 0}
+  objectGrabPointTransform: {fileID: 0}
+  pickUpLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  pickupInfo: {fileID: 0}
 --- !u!1 &7195466583247051774
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using TMPro;
 
 public class PlayerPickUpDrop : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
 
     private ObjectGrabbable objectGrabbable;
+    public TMP_Text pickupInfo;
+    private float pickUpDistance = 5f;
 
     private void Update()
     {
@@ -18,7 +21,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         {
             if (objectGrabbable == null)
             {
-                float pickUpDistance = 5f;
+                pickUpDistance = 5f;
                 if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickUpDistance))
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
@@ -33,5 +36,4 @@ public class PlayerPickUpDrop : MonoBehaviour
             }
         }
     }
-
 }
