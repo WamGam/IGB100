@@ -37,12 +37,13 @@ public class CollectDuckling : MonoBehaviour
             {
                 if (raycastHit.transform.TryGetComponent(out duckling))
                 {
-                    collected++;
-                    startTimer.timeLeft = startTimer.timeLeft + 30.0f;
-                    pointsText.text = collected.ToString();
-                    textBox.enabled = true;
                     if (raycastHit.transform.gameObject.tag == "Finder")
                     {
+                        raycastHit.transform.GetComponent<BoxCollider>().enabled = false;
+                        collected++;
+                        startTimer.timeLeft = startTimer.timeLeft + 30.0f;
+                        pointsText.text = collected.ToString();
+                        textBox.enabled = true;
                         duckling.StartDialogue();
                     }
                 }
