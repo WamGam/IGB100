@@ -14,10 +14,12 @@ public class FindObject : MonoBehaviour
     System.Random rnd = new System.Random();
     public int[] realDucks = new int[5];
     private int[] intArray = new int[14];
+    float lastTime;
     
     // Start is called before the first frame update
     void Start()
     {
+        lastTime = Time.time;
         preObjs = GameObject.FindGameObjectsWithTag("PreFind");
         for (int i = 0; i < 14; i++)
         {
@@ -54,9 +56,14 @@ public class FindObject : MonoBehaviour
         {
             for (int i = 0; i < objs.Length; i++)
             {
-                if (Vector3.Distance(player.transform.position, objs[i].transform.position) < 80)
+                if (Vector3.Distance(player.transform.position, objs[i].transform.position) < 80 && Time.time - lastTime > 1.0f)
                 {
-                    audioDuck[i].Play();
+                    if (objs[i].activeSelf == true)
+                    {
+                        audioDuck[i].Play();
+                        objs[i].transform.Translate(Vector3.up * 10.0f * Time.deltaTime);
+                        lastTime = Time.time;
+                    }
                 }
             }
         }

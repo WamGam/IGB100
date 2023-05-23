@@ -17,8 +17,11 @@ public class CollectDuckling : MonoBehaviour
     public Image textBox;
 
     private Duckling duckling;
+    private WrongDuckling wrongDuckling;
     public StartTimer startTimer;
     public MoveWall moveWall;
+
+    public AudioSource collectSound;
 
     private bool firstFive = true;
 
@@ -41,10 +44,17 @@ public class CollectDuckling : MonoBehaviour
                     {
                         raycastHit.transform.GetComponent<BoxCollider>().enabled = false;
                         collected++;
-                        startTimer.timeLeft = startTimer.timeLeft + 30.0f;
+                        StartTimer.timeLeft = StartTimer.timeLeft + 30.0f;
                         pointsText.text = collected.ToString();
+                        collectSound.Play();
                         textBox.enabled = true;
                         duckling.StartDialogue();
+                    }
+                    else
+                    {
+                        wrongDuckling = raycastHit.transform.GetComponent<WrongDuckling>();
+                        textBox.enabled = true;
+                        wrongDuckling.StartDialogue();
                     }
                 }
             }
@@ -57,7 +67,7 @@ public class CollectDuckling : MonoBehaviour
         }
         if (collected >= 10)
         {
-            SceneManager.LoadScene("Animation");
+            SceneManager.LoadScene("END");
         }
     }
 }

@@ -16,18 +16,6 @@ public class Duckling : MonoBehaviour
 
     public GameObject ducky;
 
-    public void reset()
-    {
-        if (ducky.gameObject.tag == "Finder")
-        {
-            SceneManager.LoadScene("Programming");
-        }
-        else
-        {
-            return;
-        }
-    }
-
     public void StartDialogue()
     {
         index = lines.Length;
@@ -36,6 +24,7 @@ public class Duckling : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        textComponent.text = "";
         for (int i = 0; i < index; i++)
         {
             foreach (char c in lines[i].ToCharArray())

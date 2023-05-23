@@ -8,10 +8,8 @@ public class StartTimer : MonoBehaviour
 {
     public GameObject button;
 
-    public float timeLeft;
-    public bool timerOn = false;
-
-    public TMP_Text timerTxt;
+    public static float timeLeft = 400.0f;
+    public bool timerOn = true;
 
     public void Begin()
     {
@@ -21,7 +19,6 @@ public class StartTimer : MonoBehaviour
 
     void Start()
     {
-        timerTxt.text = timeLeft.ToString();
         timerOn = true;
     }
 
@@ -42,11 +39,6 @@ public class StartTimer : MonoBehaviour
                 timeLeft = 0;
                 timerOn = false;
             }
-            timerTxt.text = timeLeft.ToString("f2");
-        }
-        else
-        {
-            SceneManager.LoadScene("END");
         }
     }
 }
