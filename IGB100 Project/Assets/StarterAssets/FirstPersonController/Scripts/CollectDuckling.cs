@@ -13,6 +13,7 @@ public class CollectDuckling : MonoBehaviour
 
     public TMP_Text pointsText;
     public int collected = 0;
+    private int pointsNum;
     public TextMeshProUGUI textComponent;
     public Image textBox;
 
@@ -44,8 +45,13 @@ public class CollectDuckling : MonoBehaviour
                     {
                         raycastHit.transform.GetComponent<BoxCollider>().enabled = false;
                         collected++;
+                        pointsNum = collected;
+                        if (pointsNum > 5)
+                        {
+                            pointsNum = 5;
+                        }
                         StartTimer.timeLeft = StartTimer.timeLeft + 30.0f;
-                        pointsText.text = collected.ToString();
+                        pointsText.text = pointsNum.ToString() + "/5";
                         collectSound.Play();
                         textBox.enabled = true;
                         duckling.StartDialogue();
